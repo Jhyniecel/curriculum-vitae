@@ -27,7 +27,7 @@ class SecondRoute extends StatefulWidget {
 class _SecondRouteState extends State<SecondRoute> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   static const emailRegex =
-      r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
+  r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
 // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -54,10 +54,11 @@ class _SecondRouteState extends State<SecondRoute> {
                                 Text(
                                   "Login",
                                   style: TextStyle(
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                      fontSize: 30,
+                      color: Color.fromARGB(255, 8, 8, 8),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                                 SizedBox(
                                   height: 20,
                                 ),
@@ -65,7 +66,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                   "Welcome back ! Login with your credentials",
                                   style: TextStyle(
                                     fontSize: 15,
-                                    color: Color.fromARGB(255, 75, 72, 72),
+                                    color: Color.fromARGB(255, 10, 10, 10),
                                   ),
                                 ),
                                 SizedBox(
@@ -80,6 +81,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                 decoration: InputDecoration(
                                     hintText: "Email",
                                     border: OutlineInputBorder()),
+                                autovalidateMode: AutovalidateMode.onUserInteraction,
                                 validator: (value) {
                                   if (RegExp(emailRegex).hasMatch(value!)) {
                                   } else if (value == null || value.isEmpty) {
@@ -98,6 +100,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                 decoration: InputDecoration(
                                     hintText: "Password",
                                     border: OutlineInputBorder()),
+                                autovalidateMode: AutovalidateMode.onUserInteraction,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return "Field cannot be empty";
@@ -133,7 +136,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                       return null;
                                     }
                                   },
-                                  color: Color.fromARGB(255, 136, 99, 130),
+                                  color:  Color.fromARGB(255, 136, 99, 130),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(40)),
                                   child: Text(
@@ -157,10 +160,9 @@ class _SecondRouteState extends State<SecondRoute> {
                                     child: Text(
                                       "Sign Up",
                                       style: TextStyle(
-                           fontSize: 17,
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          ),
-                        ),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18, color: Colors.white),
+                                    ),
                                     onPressed: () {
                                       Navigator.pushNamed(context, '/third');
                                     }),
@@ -170,17 +172,15 @@ class _SecondRouteState extends State<SecondRoute> {
                             TextButton(
                               child: Text(
                                 "Forgot Password?",
-                               style: TextStyle(
-                           fontSize: 17,
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          ),
-                        ),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600, fontSize: 18,color: Colors.white),
+                              ),
                               onPressed: () {
                                 Navigator.push(
                                     context,
                                     new MaterialPageRoute(
                                         builder: (context) =>
-                                            new ForgotRoute()));
+                                        new ForgotRoute()));
                               },
                             ),
                           ],
@@ -214,7 +214,7 @@ Widget makeInput({label, obsureText = false}) {
             ),
           ),
           border:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+          OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
         ),
       ),
       SizedBox(

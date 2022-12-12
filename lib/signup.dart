@@ -30,7 +30,7 @@ TextEditingController confirmpassword = TextEditingController();
 class _ThirdRouteState extends State<ThirdRoute> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   static const emailRegex =
-      r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
+  r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
 // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class _ThirdRouteState extends State<ThirdRoute> {
                             "Create an Account,Its free",
                             style: TextStyle(
                               fontSize: 15,
-                              color: Color.fromARGB(255, 39, 38, 38),
+                              color: Colors.grey[700],
                             ),
                           ),
                           SizedBox(
@@ -88,8 +88,10 @@ class _ThirdRouteState extends State<ThirdRoute> {
                               border: OutlineInputBorder()),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Please enter your full name';
+                            if(value!.isEmpty || value.length <=2){
+                              return "Please enter your full name";
+                            } else if (!RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                              return "Please enter your real name";
                             }
                             return null;
                           },
@@ -101,16 +103,16 @@ class _ThirdRouteState extends State<ThirdRoute> {
                             bottom: 15, left: 10, right: 10),
                         child: TextFormField(
                           decoration: InputDecoration(
-                              hintText: "User Name",
-                              border: OutlineInputBorder()),
+                              hintText: "Age", border: OutlineInputBorder()),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
+                          keyboardType: TextInputType.number,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Please enter your user name';
+                              return "Please enter your age";
+                            } else if (value.length >= 18 || double.parse(value) < 18) {
+                              return "18 years old and above only";
                             }
-                            return null;
                           },
-                          onSaved: (value) {},
                         ),
                       ),
                       Padding(
@@ -118,13 +120,13 @@ class _ThirdRouteState extends State<ThirdRoute> {
                             bottom: 15, left: 10, right: 10),
                         child: TextFormField(
                           decoration: InputDecoration(
-                              hintText: "Phone No",
+                              hintText: "Address",
                               border: OutlineInputBorder()),
-                          keyboardType: TextInputType.phone,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
+                          keyboardType: TextInputType.streetAddress,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Phone number is Required ';
+                              return 'Please enter address';
                             }
                             return null;
                           },
@@ -138,6 +140,7 @@ class _ThirdRouteState extends State<ThirdRoute> {
                           decoration: InputDecoration(
                               hintText: "Email", border: OutlineInputBorder()),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
+                          keyboardType: TextInputType.emailAddress,
                           validator: (value) {
                             if (RegExp(emailRegex).hasMatch(value!)) {
                             } else if (value == null || value.isEmpty) {
@@ -153,97 +156,17 @@ class _ThirdRouteState extends State<ThirdRoute> {
                             bottom: 15, left: 10, right: 10),
                         child: TextFormField(
                           decoration: InputDecoration(
-                              hintText: "Age", border: OutlineInputBorder()),
-                          keyboardType: TextInputType.number,
-                          onChanged: (String value) {},
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) {
-                            if (value!.length == 18 ||
-                                double.parse(value) < 18) {
-                              return ('Age should be 18 years old and above');
-                            }
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 15, left: 10, right: 10),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              hintText: "Gender", border: OutlineInputBorder()),
-                          keyboardType: TextInputType.number,
-                          onChanged: (String value) {},
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) {},
-                          onSaved: (value) {},
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 15, left: 10, right: 10),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              hintText: "Birthday",
+                              hintText: "Phone No",
                               border: OutlineInputBorder()),
-                          keyboardType: TextInputType.number,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
+                          keyboardType: TextInputType.number,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Please enter your phone number ';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) {},
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 15, left: 10, right: 10),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              hintText: "Address",
-                              border: OutlineInputBorder()),
-                          keyboardType: TextInputType.number,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Please enter your Address ';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) {},
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 15, left: 10, right: 10),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              hintText: "Citizenship",
-                              border: OutlineInputBorder()),
-                          keyboardType: TextInputType.number,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Please enter your phone number ';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) {},
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 15, left: 10, right: 10),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              hintText: "Status", border: OutlineInputBorder()),
-                          keyboardType: TextInputType.number,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Please enter your Civil Status ';
-                            }
+                              return 'Please enter phone number ';
+                            } else if (value.length <11)
+                              return 'Please enter a correct number';
+                            else if (value.length >11)
+                              return 'Please enter a correct number';
                             return null;
                           },
                           onSaved: (value) {},
@@ -277,20 +200,22 @@ class _ThirdRouteState extends State<ThirdRoute> {
                             decoration: InputDecoration(
                                 hintText: "Confirm Password",
                                 border: OutlineInputBorder()),
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return "Please re-enter password";
-                              }
-                              print(password.text);
+                              } else if (value.length < 5) {
+                                return "Must be at least 6 chars";
+                              } else {
+                                print(password.text);
 
-                              print(confirmpassword.text);
+                                print(confirmpassword.text);
 
-                              if (password.text != confirmpassword.text) {
-                                return "Password does not match";
+                                if (password.text != confirmpassword.text) {
+                                  return "Password does not match";
+                                }
+                                return null;
                               }
-                              return null;
                             }),
                       ),
                       Padding(
@@ -345,9 +270,9 @@ class _ThirdRouteState extends State<ThirdRoute> {
                               child: Text(
                                 "Login",
                                 style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color.fromARGB(255, 255, 248, 248),
-                                ),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: Colors.white),
                               ),
                               onPressed: () {
                                 Navigator.pushNamed(context, '/second');
@@ -388,7 +313,7 @@ Widget makeInput({label, obsureText = false}) {
             ),
           ),
           border:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+          OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
         ),
       ),
       SizedBox(

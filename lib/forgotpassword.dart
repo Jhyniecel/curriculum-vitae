@@ -34,7 +34,7 @@ class ForgotRoute extends StatelessWidget {
                     "Forgot Password",
                     style: TextStyle(
                       fontSize: 30,
-                      color: Color.fromARGB(255, 255, 250, 250),
+                      color: Color.fromARGB(255, 15, 15, 15),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -45,7 +45,7 @@ class ForgotRoute extends StatelessWidget {
                     "Enter your registered email",
                     style: TextStyle(
                       fontSize: 15,
-                      color: Color.fromARGB(255, 255, 250, 250),
+                      color: Color.fromARGB(255, 8, 8, 8),
                     ),
                   ),
                   SizedBox(
