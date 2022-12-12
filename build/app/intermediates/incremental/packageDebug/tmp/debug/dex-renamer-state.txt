@@ -1,0 +1,4 @@
+#Mon Dec 12 00:26:53 PST 2022
+base.0=C\:\\jhy\\curriculum_vitae\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
